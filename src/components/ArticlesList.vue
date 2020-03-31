@@ -29,6 +29,18 @@
         <h4>Current Article</h4>
         <div>
           <label>
+            <strong>Thumbnail:</strong>
+          </label>
+          <d-img
+            fluid
+            thumbnail
+            v-bind:src="currentArticle.img_article"
+            :width="1000"
+            :height="10"
+          />
+        </div>
+        <div>
+          <label>
             <strong>Title:</strong>
           </label>
           {{ currentArticle.title_article }}
@@ -46,6 +58,7 @@
           </label>
           {{ currentArticle.author.name_author }}
         </div>
+        <a class="badge badge-warning" :href="'/articles/' + currentArticle.id">Edit</a>
         <!-- <div>
           <label>
             <strong>Status:</strong>

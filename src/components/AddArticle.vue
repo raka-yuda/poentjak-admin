@@ -1,4 +1,4 @@
-<template>
+<!--<template>
   <div class="submit-form">
     <div v-if="!submitted">
       <div class="form-group">
@@ -34,17 +34,6 @@
           name="article"
         />
       </div>
-      <!-- 
-      <div class="form-group">
-        <label for="description">Post Date</label>
-        <input
-          class="form-control"
-          id="description"
-          required
-          v-model="article.description"
-          name="description"
-        />
-      </div>-->
 
       <div class="form-group">
         <label for="title">Author</label>
@@ -67,6 +56,96 @@
     </div>
   </div>
 </template>
+-->
+<template>
+  <d-container fluid>
+    <div v-if="!submitted">
+      <d-row class="my-1">
+        <d-col sm="3">
+          <label for="title">Title</label>
+        </d-col>
+        <d-col sm="9">
+          <d-form-input
+            :id="title_article"
+            v-model="article.title_article"
+            class="form-control"
+            :type="text"
+            :required="true"
+            :name="title_article"
+          ></d-form-input>
+        </d-col>
+      </d-row>
+
+      <d-row class="my-1">
+        <d-col sm="3">
+          <label for="title">Image Article</label>
+        </d-col>
+        <d-col sm="9">
+          <d-form-input
+            :id="img_article"
+            v-model="article.img_article"
+            class="form-control"
+            :type="text"
+            :required="true"
+            :name="img_article"
+          ></d-form-input>
+        </d-col>
+      </d-row>
+
+      <d-row class="my-1">
+        <d-col sm="3">
+          <label for="title">Article</label>
+        </d-col>
+        <d-col sm="9">
+          <d-form-textarea
+            :id="article"
+            v-model="article.article"
+            class="form-control"
+            :type="text"
+            :required="true"
+            :name="article"
+            :placeholder="`Enter something`"
+            :rows="3"
+            :max-rows="6"
+          ></d-form-textarea>
+        </d-col>
+      </d-row>
+
+      <d-row class="my-1">
+        <d-col sm="3">
+          <label for="title">Author</label>
+        </d-col>
+        <d-col sm="9">
+          <d-form-input
+            :id="author"
+            v-model="article.id_author"
+            class="form-control"
+            :type="text"
+            :required="true"
+            :name="author"
+          ></d-form-input>
+        </d-col>
+      </d-row>
+      <button @click="saveArticle" class="btn btn-success">Submit</button>
+    </div>
+    
+    <div v-else>
+      <h4>You submitted successfully!</h4>
+      <button class="btn btn-success" @click="newTutorial">Add</button>
+    </div>
+  </d-container>
+</template>
+
+// <script>
+// export default {
+//   data () {
+//     return {
+//       inputTypes: ['text', 'password', 'email', 'number', 'url','tel', 'date', 'time']
+//     }
+//   }
+// }
+//
+</script>
 
 <script>
 import ArticleDataService from "../services/ArticleDataService";
@@ -80,7 +159,7 @@ export default {
         img_article: "",
         title_article: "",
         article: "",
-        post_date: "",
+        // post_date: "",
         id_author: ""
       },
       submitted: false
