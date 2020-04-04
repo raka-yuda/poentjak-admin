@@ -7,8 +7,22 @@ import ShardsVue from 'shards-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'shards-ui/dist/css/shards.css'
 
-Vue.use(ShardsVue);
-Vue.config.productionTip = false
+
+// Styles
+// import 'bootstrap/dist/css/bootstrap.css';
+import '@/scss/shards-dashboards.scss';
+import '@/assets/scss/date-range.scss';
+
+import Default from '@/layouts/Default.vue';
+
+ShardsVue.install(Vue);
+
+Vue.component('default-layout', Default);
+
+// Vue.use(ShardsVue);
+Vue.config.productionTip = false;
+Vue.prototype.$eventHub = new Vue();
+
 
 new Vue({
   router,

@@ -1,4 +1,4 @@
-<template>
+<!--<template>
   <div id="app">
     <nav class="navbar navbar-expand navbar-dark bg-dark">
       <a href="#" class="navbar-brand">Admin</a>
@@ -16,10 +16,29 @@
       <router-view />
     </div>
   </div>
+</template>-->
+
+<template>
+  <component :is="layout">
+    <router-view />
+  </component>
 </template>
+
+
+<!--<script>
+export default {
+  name: "app"
+};
+</script>
+-->
+
 
 <script>
 export default {
-  name: "app"
+  computed: {
+    layout() {
+      return `${this.$route.meta.layout || "default"}-layout`;
+    }
+  }
 };
 </script>
