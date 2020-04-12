@@ -30,7 +30,9 @@
                 v-for="(article, index) in articles"
                 :key="index"
                 @click="setActiveArticle(article, index)"
-              >{{ article.title_article }}</li>
+              >
+                {{ article.title_article }}
+              </li>
             </ul>
             <!-- <button class="m-3 btn btn-sm btn-danger" @click="removeAllArticles">Remove All</button> -->
           </d-card-body>
@@ -47,7 +49,10 @@
               <d-card class="card-small card-post card-post--1">
                 <div
                   class="card-post__image"
-                  :style="{ backgroundImage: 'url(\'' + currentArticle.img_article + '\')' }"
+                  :style="{
+                    backgroundImage:
+                      'url(\'' + currentArticle.img_article + '\')'
+                  }"
                 >
                   <!-- <d-badge
               pill
@@ -57,22 +62,33 @@
                     <a
                       href="#"
                       class="card-post__author-avatar card-post__author-avatar--small"
-                      :style="{ backgroundImage: 'url(\'' + currentArticle.author.img_author + '\')' }"
-                    >Written by {{ currentArticle.author.name_author }}</a>
+                      :style="{
+                        backgroundImage:
+                          'url(\'' + currentArticle.author.img_author + '\')'
+                      }"
+                      >Written by {{ currentArticle.author.name_author }}</a
+                    >
                   </div>
                 </div>
                 <d-card-body>
                   <h5 class="card-title">
-                    <a href="#" class="text-fiord-blue">{{ currentArticle.title_article }}</a>
+                    <a href="#" class="text-fiord-blue">{{
+                      currentArticle.title_article
+                    }}</a>
                   </h5>
-                  <small class="text-muted">Written by {{ currentArticle.author.name_author }}</small>
-                  <p class="card-text d-inline-block mb-3 mt-2">{{ currentArticle.article }}</p>
-                  <!-- <span class="text-muted">{{ post.date }}</span> -->
+                  <small class="text-muted"
+                    >Written by {{ currentArticle.author.name_author }}</small
+                  ><br />
+                  <div v-html="currentArticle.article"></div>
 
-                  <div class="my-auto ml-auto">
+                  <div class="ml-auto mt-3">
+                    <d-button size="sm" class="btn-white mr-3">
+                      <i class="material-icons mr-3">edit</i>
+                      <a class :href="'/edit/' + currentArticle.id">Edit</a>
+                    </d-button>
                     <d-button size="sm" class="btn-white">
                       <i class="material-icons mr-3">edit</i>
-                      <a class :href="'/articles/' + currentArticle.id">Edit</a>
+                      <a class :href="'/articles/' + currentArticle.id">Show</a>
                     </d-button>
                   </div>
                 </d-card-body>

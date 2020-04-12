@@ -4,7 +4,7 @@
     <d-row no-gutters class="page-header py-2 pb-4 mb-3 border-bottom">
       <d-col col sm="4" class="text-center text-sm-left mb-4 mb-sm-0">
         <span class="text-uppercase page-subtitle">ARTICLE</span>
-        <h3 class="page-title">Show Articles</h3>
+        <h3 class="page-title">Edit Articles</h3>
       </d-col>
     </d-row>
 
@@ -12,27 +12,9 @@
       <d-col lg="12" class="mb-4">
         <d-card class="card-small mb-4">
           <div v-if="currentArticle">
-            <!-- <d-card-header class="border-bottom">
+            <d-card-header class="border-bottom">
               <h6 class="m-0">Form Inputs</h6>
-            </d-card-header> -->
-            <div
-              class="card-post__image"
-              :style="{
-                backgroundImage: 'url(\'' + currentArticle.img_article + '\')'
-              }"
-            >
-              <!-- <div class="card-post__author d-flex">
-                <a
-                  href="#"
-                  class="card-post__author-avatar card-post__author-avatar--small"
-                  :style="{
-                    backgroundImage:
-                      'url(\'' + currentArticle.author.img_author + '\')'
-                  }"
-                  >Written by Anna Ken</a
-                >
-              </div> -->
-            </div>
+            </d-card-header>
 
             <d-list-group-item class="p-3">
               <d-row>
@@ -42,19 +24,18 @@
                   <d-form>
                     <div class="form-group">
                       <d-input-group class="mb-3">
-                        <!-- <d-input
+                        <d-input
                           placeholder="Title"
                           id="title_article"
                           v-model="currentArticle.title_article"
                           class="form-control"
                           required
                           name="title_article"
-                        /> -->
-                        <h4 class="mb-0">{{ currentArticle.title_article }}</h4>
+                        />
                       </d-input-group>
                     </div>
 
-                    <!-- <div class="form-group">
+                    <div class="form-group">
                       <d-input-group class="mb-3">
                         <d-input
                           placeholder="Image Article"
@@ -65,11 +46,20 @@
                           name="img_article"
                         />
                       </d-input-group>
-                    </div> -->
+                    </div>
 
-                    <div v-html="currentArticle.article"></div>
+                    <div class="form-group">
+                      <d-form-textarea
+                        id="article"
+                        class="form-control"
+                        v-model="currentArticle.article"
+                        :placeholder="`Enter something`"
+                        :rows="6"
+                        :max-rows="9"
+                      ></d-form-textarea>
+                    </div>
 
-                    <!-- <div class="form-group">
+                    <div class="form-group">
                       <d-input-group class="mb-3">
                         <d-select
                           :required="true"
@@ -86,10 +76,10 @@
                           >
                         </d-select>
                       </d-input-group>
-                    </div> -->
+                    </div>
                   </d-form>
 
-                  <!-- <button @click="deleteArticle" class="btn btn-danger mr-3">
+                  <button @click="deleteArticle" class="btn btn-danger mr-3">
                     Delete
                   </button>
                   <button
@@ -98,9 +88,16 @@
                     type="submit"
                   >
                     Update
-                  </button> -->
+                  </button>
                 </d-col>
 
+                <!-- 
+    <button
+      class="badge badge-primary mr-2"
+      v-if="currentTutorial.published"
+      @click="updatePublished(false)"
+    >UnPublish</button>
+                <button v-else class="badge badge-primary mr-2" @click="updatePublished(true)">Publish</button>-->
                 <div v-if="message">
                   <d-col>
                     <d-button outline theme="success" class="mb-2 mr-1 mt-3">{{
@@ -150,7 +147,48 @@ export default {
       ArticleDataService.get(id)
         .then(response => {
           this.currentArticle = response.data;
-          console.log(this.currentArticle);
+          console.log(response.data);
+        })
+        .catch(e => {
+          console.log(e);
+        });
+    },
+
+    // updatePublished(status) {
+    //   var data = {
+    //     id: this.currentTutorial.id,
+    //     title: this.currentTutorial.title,
+    //     description: this.currentTutorial.description,
+    //     published: status
+    //   };
+
+    //   TutorialDataService.update(this.currentTutorial.id, data)
+    //     .then(response => {
+    //       this.currentTutorial.published = status;
+    //       console.log(response.data);
+    //     })
+    //     .catch(e => {
+    //       console.log(e);
+    //     });
+    // },
+
+    updateArticle() {
+      // console.log(this.currentArticle);
+      ArticleDataService.update(this.currentArticle.id, this.currentArticle)
+        .then(response => {
+          console.log(response.data);
+          this.message = "The Article was updated successfully!";
+        })
+        .catch(e => {
+          console.log(e);
+        });
+    },
+
+    deleteArticle() {
+      ArticleDataService.delete(this.currentArticle.id)
+        .then(response => {
+          console.log(response.data);
+          this.$router.push({ name: "articles" });
         })
         .catch(e => {
           console.log(e);

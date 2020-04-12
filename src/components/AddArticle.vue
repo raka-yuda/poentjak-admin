@@ -48,18 +48,13 @@
                       </d-input-group>
                     </div>
 
-                    <div class="form-group">
-                      <d-form-textarea
-                        :id="article"
+                    <d-form class="form-group">
+                      <quill
                         v-model="article.article"
-                        class="form-control"
-                        :required="true"
-                        :name="article"
-                        :placeholder="`Enter something`"
-                        :rows="6"
-                        :max-rows="9"
-                      ></d-form-textarea>
-                    </div>
+                        :config="config"
+                        output="html"
+                      ></quill>
+                    </d-form>
 
                     <div class="form-group">
                       <d-input-group class="mb-3">
@@ -71,28 +66,25 @@
                             :key="item.id"
                             v-bind:value="item.id"
                             :selected="article.id_author == item.id"
-                          >{{ item.name_author }}</option>
+                            >{{ item.name_author }}</option
+                          >
                         </d-select>
                       </d-input-group>
                     </div>
-
-                    <!-- <div class="form-group">
-                      <d-input type="password" placeholder="Password" value="myCoolPassword" />
-                    </div>
-                    <div class="form-group">
-                      <d-input
-                        placeholder="1234 Main St"
-                        value="7898 Kensington Junction, New York, USA"
-                      />
-                    </div>-->
                   </d-form>
-                  <button @click="saveArticle" class="btn btn-success">Submit</button>
+                  <button @click="saveArticle" class="btn btn-success">
+                    Submit
+                  </button>
                 </div>
                 <div v-else>
                   <d-col>
-                    <d-button outline theme="success" class="mb-2 mr-1">You submitted successfully!</d-button>
+                    <d-button outline theme="success" class="mb-2 mr-1"
+                      >You submitted successfully!</d-button
+                    >
                   </d-col>
-                  <button class="btn btn-success" @click="newTutorial">Add</button>
+                  <button class="btn btn-success" @click="newTutorial">
+                    Add
+                  </button>
                 </div>
               </d-col>
             </d-row>
@@ -106,11 +98,28 @@
 <script>
 import ArticleDataService from "../services/ArticleDataService";
 import AuthorDataService from "../services/AuthorDataService";
+import "quill/dist/quill.snow.css";
 
 export default {
   name: "add-article",
   data() {
     return {
+      config: {
+        modules: {
+          toolbar: [
+            [{ header: [1, 2, 3, 4, 5, false] }],
+            ["bold", "italic", "underline", "strike"],
+            ["blockquote", "code-block"],
+            [{ header: 1 }, { header: 2 }],
+            [{ list: "ordered" }, { list: "bullet" }],
+            [{ script: "sub" }, { script: "super" }],
+            [{ indent: "-1" }, { indent: "+1" }],
+            ["link", "image"]
+          ]
+        },
+        placeholder: "Write Something !!!",
+        theme: "snow"
+      },
       author: [],
       article: {
         id: null,
@@ -124,6 +133,14 @@ export default {
     };
   },
   methods: {
+    // selectionChange(editor, range) {
+    //   if (range) {
+    //     if (range.start !== range.end) {
+    //       this.selectedText = editor.getText(range.start, range.end);
+    //       editor.formatText(range, "custom", "hello world");
+    //     }
+    //   }
+    // },
     retrieveAuthors() {
       AuthorDataService.getAll()
         .then(response => {
@@ -154,9 +171,10 @@ export default {
         article: this.article.article,
         published: this.article.published,
         post_date: timenow,
-        id_author: this.article.id_author
+        id_author: this.article.id_author,
+        content: this.content
       };
-      // console.log(data);
+      console.log(data);
       ArticleDataService.create(data)
         .then(response => {
           this.article.id = response.data.id;

@@ -41,6 +41,11 @@ export default new Router({
             component: () => import("./components/Article")
         },
         {
+            path: "/edit/:id",
+            name: "edit-article",
+            component: () => import("./components/EditArticle")
+        },
+        {
             path: "/add",
             name: "add",
             component: () => import("./components/AddArticle")
