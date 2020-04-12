@@ -145,7 +145,7 @@ export default {
       AuthorDataService.getAll()
         .then(response => {
           this.author = response.data;
-          console.log(response.data);
+          // console.log(response.data);
         })
         .catch(e => {
           console.log(e);
@@ -174,7 +174,7 @@ export default {
         id_author: this.article.id_author,
         content: this.content
       };
-      console.log(data);
+      // console.log(data);
       ArticleDataService.create(data)
         .then(response => {
           this.article.id = response.data.id;
