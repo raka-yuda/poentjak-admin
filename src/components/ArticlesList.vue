@@ -86,10 +86,12 @@
                       <i class="material-icons mr-3">edit</i>
                       <a class :href="'/edit/' + currentArticle.id">Edit</a>
                     </d-button>
-                    <d-button size="sm" class="btn-white">
-                      <i class="material-icons mr-3">edit</i>
-                      <a class :href="'/articles/' + currentArticle.id">Show</a>
-                    </d-button>
+                    <router-link :to="'/articles/' + currentArticle.id">
+                      <d-button size="sm" class="btn-white">
+                        <i class="material-icons mr-3">edit</i>
+                        <a class>Show</a>
+                      </d-button>
+                    </router-link>
                   </div>
                 </d-card-body>
               </d-card>

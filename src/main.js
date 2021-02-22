@@ -14,10 +14,13 @@ import "@/scss/shards-dashboards.scss";
 import "@/assets/scss/date-range.scss";
 
 import Default from "@/layouts/Default.vue";
+import Article from "@/layouts/Article.vue";
 
 ShardsVue.install(Vue);
 
 Vue.component("default-layout", Default);
+Vue.component("article-layout", Article);
+
 Vue.use(VueQuill);
 
 // Vue.use(ShardsVue);

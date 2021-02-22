@@ -10,7 +10,6 @@ import ComponentsOverview from './views/ComponentsOverview.vue';
 import Tables from './views/Tables.vue';
 import BlogPosts from './views/BlogPosts.vue';
 
-
 Vue.use(Router);
 
 export default new Router({
@@ -38,6 +37,9 @@ export default new Router({
         {
             path: "/articles/:id",
             name: "article-details",
+            meta: {
+                layout : 'article'
+            },
             component: () => import("./components/Article")
         },
         {
