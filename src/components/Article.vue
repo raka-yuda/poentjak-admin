@@ -34,6 +34,14 @@
               </div> -->
             </div>
 
+            <div class="row m-3 d-flex align-items-center">
+              <img class="rounded-circle mr-3" :src="author[currentArticle.id_author].img_author" width="46" height="46" style="background-size: cover; object-fit: cover;">
+
+              <h6 class="mb-0 mr-4">{{ author[currentArticle.id_author].name_author }}</h6>
+              <span class="dot mr-4"></span>
+              <p class="mb-0">{{ currentArticle.post_date }}</p>
+            </div>
+
             <d-list-group-item class="p-3">
               <d-row>
                 <!-- Forms -->
@@ -159,8 +167,10 @@ export default {
   },
   mounted() {
     this.message = "";
-    this.getArticle(this.$route.params.id);
     this.retrieveAuthors();
+    this.getArticle(this.$route.params.id);
+    
+    console.log(this.author[this.currentArticle.id_author])
   }
 };
 </script>
@@ -169,5 +179,13 @@ export default {
 .edit-form {
   max-width: 300px;
   margin: auto;
+}
+
+.dot {
+  height: 8px;
+  width: 8px;
+  background-color: #E3E6E8;
+  border-radius: 50%;
+  display: inline-block;
 }
 </style>
