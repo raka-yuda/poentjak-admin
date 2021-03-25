@@ -1,24 +1,24 @@
 import http from "../http-common";
 
-class AuthorDataService {
+class PostMountainDataService {
     getAll() {
-        return http.get("/authors");
+        return http.get("/post_post_mountains");
     }
 
     get(id) {
-        return http.get(`/authors/${id}`);
+        return http.get(`/post_mountains/${id}`);
     }
 
     create(data) {
-        return http.post("/authors", data);
+        return http.post("/post_mountains", data);
     }
 
     update(id, data) {
-        return http.put(`/authors/${id}`, data);
+        return http.put(`/post_mountains/${id}`, data);
     }
 
     delete(id) {
-        return http.delete(`/authors/${id}`);
+        return http.delete(`/post_mountains/${id}`);
     }
 
     // deleteAll() {
@@ -30,4 +30,4 @@ class AuthorDataService {
     // }
 }
 
-export default new AuthorDataService();
+export default new PostMountainDataService();

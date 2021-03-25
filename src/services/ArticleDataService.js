@@ -5,6 +5,10 @@ class ArticleDataService {
         return http.get("/articles");
     }
 
+    getAllPublished() {
+        return http.get("/articles/published");
+    }
+
     get(id) {
         return http.get(`/articles/${id}`);
     }
