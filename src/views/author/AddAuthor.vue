@@ -25,7 +25,7 @@
                     <div class="form-group">
                       <d-input-group class="mb-3">
                         <d-input
-                          placeholder="name_author"
+                          placeholder="Name Author"
                           id="name_author"
                           v-model="author.name_author"
                           class="form-control"
@@ -40,7 +40,7 @@
                         <d-input
                           placeholder="Image Author"
                           id="img_article"
-                          v-model="img_author.img_author"
+                          v-model="author.img_author"
                           class="form-control"
                           required
                           name="img_author"
@@ -73,7 +73,7 @@
 
 <script>
 // import ArticleDataService from "../services/ArticleDataService";
-import AuthorDataService from "../services/AuthorDataService";
+import AuthorDataService from "../../services/AuthorDataService";
 import "quill/dist/quill.snow.css";
 
 export default {
@@ -104,22 +104,14 @@ export default {
     };
   },
   methods: {
-    // retrieveAuthors() {
-    //   AuthorDataService.getAll()
-    //     .then(response => {
-    //       this.author = response.data;
-    //       // console.log(response.data);
-    //     })
-    //     .catch(e => {
-    //       console.log(e);
-    //     });
-    // },
     saveAuthor() {
       var data = {
         name_author: this.article.img_article,
         img_author: this.article.title_article,
       };
+
       // console.log(data);
+
       AuthorDataService.create(data)
         .then(response => {
           this.article.id = response.data.id;
@@ -136,9 +128,6 @@ export default {
       this.author = {};
     }
   },
-  // mounted() {
-  //   this.retrieveAuthors();
-  // }
 };
 </script>
 

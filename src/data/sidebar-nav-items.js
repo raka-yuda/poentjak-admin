@@ -1,18 +1,42 @@
 export default function () {
   return [{
       title: 'Articles',
-      to: {
-        name: 'articles',
-      },
+      // to: {
+      //   name: 'articles',
+      // },
       htmlBefore: '<i class="material-icons">edit</i>',
       htmlAfter: '',
+      items: [
+        {
+          title: 'List Article',
+          to: {
+            name: 'articles',
+          },
+          htmlBefore: '<i class="material-icons">edit</i>',
+          htmlAfter: '',
+        }, {
+          title: 'Add Article',
+          to: {
+            name: 'add-article',
+          },
+          htmlBefore: '<i class="material-icons">note_add</i>',
+          htmlAfter: '',
+        },
+      ]
     }, {
-      title: 'Add Article',
-      to: {
-        name: 'add',
-      },
+      title: 'Author',
       htmlBefore: '<i class="material-icons">note_add</i>',
       htmlAfter: '',
+      items: [
+        {
+          title: 'Add Author',
+          to: {
+            name: 'add-author',
+          },
+          htmlBefore: '<i class="material-icons">note_add</i>',
+          htmlAfter: '',
+        },
+      ]
     },
     {
       title: 'Blog Dashboard',

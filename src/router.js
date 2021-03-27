@@ -9,6 +9,7 @@ import Errors from './views/Errors.vue';
 import ComponentsOverview from './views/ComponentsOverview.vue';
 import Tables from './views/Tables.vue';
 import BlogPosts from './views/BlogPosts.vue';
+import AddAuthor from './views/author/AddAuthor.vue'
 
 Vue.use(Router);
 
@@ -48,9 +49,14 @@ export default new Router({
             component: () => import("./components/EditArticle")
         },
         {
-            path: "/add",
-            name: "add",
+            path: "/article/add-article",
+            name: "add-article",
             component: () => import("./components/AddArticle")
+        },
+        {
+            path: "/author/add-author",
+            name: "add-author",
+            component: AddAuthor
         },
         {
             path: '/blog-overview',
