@@ -9,6 +9,13 @@ import Errors from './views/Errors.vue';
 import ComponentsOverview from './views/ComponentsOverview.vue';
 import Tables from './views/Tables.vue';
 import BlogPosts from './views/BlogPosts.vue';
+
+import Articles from './views/article/ArticlesList.vue'
+import Article from './views/article/Article.vue'
+import AddArticle from './views/article/AddArticle.vue'
+import EditArticle from './views/article/EditArticle.vue'
+
+import Authors from './views/author/AuthorList.vue'
 import AddAuthor from './views/author/AddAuthor.vue'
 
 Vue.use(Router);
@@ -33,28 +40,33 @@ export default new Router({
             path: "/articles",
             // alias: "/articles",
             name: "articles",
-            component: () => import("./components/ArticlesList")
+            component: Articles
         },
         {
-            path: "/articles/:id",
+            path: "/article/post/:id",
             name: "article-details",
             meta: {
                 layout : 'article'
             },
-            component: () => import("./components/Article")
+            component: Article
         },
         {
-            path: "/edit/:id",
+            path: "/article/edit/:id",
             name: "edit-article",
-            component: () => import("./components/EditArticle")
+            component: EditArticle
         },
         {
-            path: "/article/add-article",
+            path: "/article/add",
             name: "add-article",
-            component: () => import("./components/AddArticle")
+            component: AddArticle
         },
         {
-            path: "/author/add-author",
+            path: "/authors",
+            name: "authors",
+            component: Authors
+        },
+        {
+            path: "/author/add",
             name: "add-author",
             component: AddAuthor
         },
