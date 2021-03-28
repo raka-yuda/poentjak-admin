@@ -45,6 +45,20 @@ export default function () {
           htmlAfter: '',
         },
       ]
+    }, {
+      title: 'Mountain',
+      htmlBefore: '<i class="material-icons">note_add</i>',
+      htmlAfter: '',
+      items: [
+        {
+          title: 'List Mountain',
+          to: {
+            name: 'mountains',
+          },
+          htmlBefore: '<i class="material-icons">note_add</i>',
+          htmlAfter: '',
+        }
+      ]
     },
     {
       title: 'Blog Dashboard',

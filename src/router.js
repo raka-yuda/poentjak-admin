@@ -10,7 +10,7 @@ import ComponentsOverview from './views/ComponentsOverview.vue';
 import Tables from './views/Tables.vue';
 import BlogPosts from './views/BlogPosts.vue';
 
-import Articles from './views/article/ArticlesList.vue'
+import Articles from './views/article/ArticleList.vue'
 import Article from './views/article/Article.vue'
 import AddArticle from './views/article/AddArticle.vue'
 import EditArticle from './views/article/EditArticle.vue'
@@ -18,6 +18,8 @@ import EditArticle from './views/article/EditArticle.vue'
 import Authors from './views/author/AuthorList.vue'
 import AddAuthor from './views/author/AddAuthor.vue'
 import EditAuthor from './views/author/EditAuthor.vue'
+
+import Mountains from './views/mountain/MountainList.vue'
 
 Vue.use(Router);
 
@@ -75,6 +77,10 @@ export default new Router({
             path: "/author/edit/:id",
             name: "edit-author",
             component: EditAuthor
+        },{
+            path: "/mountains",
+            name: "mountains",
+            component: Mountains
         },
         {
             path: '/blog-overview',
