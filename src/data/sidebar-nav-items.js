@@ -29,6 +29,14 @@ export default function () {
       htmlAfter: '',
       items: [
         {
+          title: 'List Author',
+          to: {
+            name: 'authors',
+          },
+          htmlBefore: '<i class="material-icons">note_add</i>',
+          htmlAfter: '',
+        },
+        {
           title: 'Add Author',
           to: {
             name: 'add-author',
