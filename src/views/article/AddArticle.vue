@@ -96,8 +96,8 @@
 </template>
 
 <script>
-import ArticleDataService from "../services/ArticleDataService";
-import AuthorDataService from "../services/AuthorDataService";
+import ArticleDataService from "../../services/ArticleDataService";
+import AuthorDataService from "../../services/AuthorDataService";
 import "quill/dist/quill.snow.css";
 
 export default {

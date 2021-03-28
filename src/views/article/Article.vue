@@ -131,8 +131,8 @@
 </template>
 
 <script>
-import ArticleDataService from "../services/ArticleDataService";
-import AuthorDataService from "../services/AuthorDataService";
+import ArticleDataService from "../../services/ArticleDataService";
+import AuthorDataService from "../../services/AuthorDataService";
 
 export default {
   name: "article",

@@ -118,7 +118,7 @@
 </template>
 
 <script>
-import ArticleDataService from "../services/ArticleDataService";
+import ArticleDataService from "../../services/ArticleDataService";
 
 export default {
   name: "articles-list",
