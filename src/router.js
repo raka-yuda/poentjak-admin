@@ -17,6 +17,7 @@ import EditArticle from './views/article/EditArticle.vue'
 
 import Authors from './views/author/AuthorList.vue'
 import AddAuthor from './views/author/AddAuthor.vue'
+import EditAuthor from './views/author/EditAuthor.vue'
 
 Vue.use(Router);
 
@@ -69,6 +70,11 @@ export default new Router({
             path: "/author/add",
             name: "add-author",
             component: AddAuthor
+        },
+        {
+            path: "/author/edit/:id",
+            name: "edit-author",
+            component: EditAuthor
         },
         {
             path: '/blog-overview',

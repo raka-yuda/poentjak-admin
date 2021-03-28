@@ -59,7 +59,7 @@
               <!-- <span class="text-muted d-block mb-2">{{ userDetails.jobTitle }}</span> -->
 
               <!-- User Follow -->
-              <!-- <d-button pill outline size="sm" class="mb-2"> <i class="material-icons mr-1">person_add</i> Follow</d-button> -->
+              <d-button pill outline size="sm" class="mb-2"> <i class="material-icons mr-1">edit</i> <a class :href="'/author/edit/' + currentAuthor.id">Edit</a></d-button>
 
             </d-card-header>
           </div>

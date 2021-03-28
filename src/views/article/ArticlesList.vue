@@ -84,9 +84,9 @@
                   <div class="ml-auto mt-3">
                     <d-button size="sm" class="btn-white mr-3">
                       <i class="material-icons mr-3">edit</i>
-                      <a class :href="'/edit/' + currentArticle.id">Edit</a>
+                      <a class :href="'/article/edit/' + currentArticle.id">Edit</a>
                     </d-button>
-                    <router-link :to="'/articles/' + currentArticle.id">
+                    <router-link :to="'/article/post/' + currentArticle.id">
                       <d-button size="sm" class="btn-white">
                         <i class="material-icons mr-3">edit</i>
                         <a class>Show</a>
