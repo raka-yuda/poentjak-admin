@@ -57,6 +57,20 @@ export default function () {
           },
           htmlBefore: '<i class="material-icons">note_add</i>',
           htmlAfter: '',
+        }, {
+          title: 'Add Mountain',
+          to: {
+            name: 'add-mountain',
+          },
+          htmlBefore: '<i class="material-icons">note_add</i>',
+          htmlAfter: '',
+        }, {
+          title: 'Post Mountain',
+          to: {
+            name: 'post-mountains',
+          },
+          htmlBefore: '<i class="material-icons">note_add</i>',
+          htmlAfter: '',
         }
       ]
     },

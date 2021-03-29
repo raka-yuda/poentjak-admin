@@ -2,7 +2,11 @@ import http from "../http-common";
 
 class PostMountainDataService {
     getAll() {
-        return http.get("/post_post_mountains");
+        return http.get("/post_mountains");
+    }
+
+    getByIdMountain(id) {
+        return http.get(`/post_mountains/mountain/${id}`);
     }
 
     get(id) {

@@ -20,6 +20,10 @@ import AddAuthor from './views/author/AddAuthor.vue'
 import EditAuthor from './views/author/EditAuthor.vue'
 
 import Mountains from './views/mountain/MountainList.vue'
+import AddMountain from './views/mountain/AddMountain.vue'
+
+import PostMountains from './views/post-mountain/PostMountainList.vue'
+
 
 Vue.use(Router);
 
@@ -81,6 +85,14 @@ export default new Router({
             path: "/mountains",
             name: "mountains",
             component: Mountains
+        },{
+            path: "/mountain/add",
+            name: "add-mountain",
+            component: AddMountain
+        },{
+            path: "/post-mountains",
+            name: "post-mountains",
+            component: PostMountains
         },
         {
             path: '/blog-overview',
