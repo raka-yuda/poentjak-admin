@@ -34,10 +34,10 @@
               </div> -->
             </div>
 
-            <div class="row m-3 d-flex align-items-center">
-              <img class="rounded-circle mr-3" :src="author[currentArticle.id_author].img_author" width="46" height="46" style="background-size: cover; object-fit: cover;">
+            <div v-if="currentArticle.author" class="row m-3 d-flex align-items-center">
+              <img class="rounded-circle mr-3" :src="currentArticle.author.img_author" width="46" height="46" style="background-size: cover; object-fit: cover;">
 
-              <h6 class="mb-0 mr-4">{{ author[currentArticle.id_author].name_author }}</h6>
+              <h6 class="mb-0 mr-4">{{ currentArticle.author.name_author }}</h6>
               <span class="dot mr-4"></span>
               <p class="mb-0">{{ currentArticle.post_date }}</p>
             </div>
@@ -144,33 +144,30 @@ export default {
     };
   },
   methods: {
-    retrieveAuthors() {
-      AuthorDataService.getAll()
+    retrieveAuthor(id) {
+      AuthorDataService.get(id)
         .then(response => {
-          this.author = response.data;
-          console.log(response.data);
+          this.currentArticle.author = response.data
         })
         .catch(e => {
           console.log(e);
         });
     },
-    getArticle(id) {
-      ArticleDataService.get(id)
+    async getArticle(id) {
+      return await ArticleDataService.get(id)
         .then(response => {
-          this.currentArticle = response.data;
-          console.log(this.currentArticle);
+          return response.data;
         })
         .catch(e => {
           console.log(e);
         });
     }
   },
-  mounted() {
+  async mounted() {
     this.message = "";
-    this.retrieveAuthors();
-    this.getArticle(this.$route.params.id);
-    
-    console.log(this.author[this.currentArticle.id_author])
+    let article = await this.getArticle(this.$route.params.id);
+    article.author = this.retrieveAuthor(article.id_author);
+    this.currentArticle = article;
   }
 };
 </script>

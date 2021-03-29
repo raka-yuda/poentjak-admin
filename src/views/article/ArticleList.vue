@@ -71,7 +71,7 @@
                   </div>
                 </div>
                 <d-card-body>
-                  <h5 class="card-title">
+                  <h5 class="card-title mb-0">
                     <a href="#" class="text-fiord-blue">{{
                       currentArticle.title_article
                     }}</a>
@@ -79,7 +79,7 @@
                   <small class="text-muted"
                     >Written by {{ currentArticle.author.name_author }}</small
                   ><br />
-                  <div v-html="currentArticle.article"></div>
+                  <div class="mt-3" v-html="currentArticle.article"></div>
 
                   <div class="ml-auto mt-3">
                     <d-button size="sm" class="btn-white mr-3">
@@ -149,20 +149,15 @@ export default {
     },
 
     setActiveArticle(article, index) {
+      article.article = this.removeTagHTML(article.article);
       this.currentArticle = article;
       this.currentIndex = index;
     },
 
-    // removeAllArticles() {
-    //   ArticleDataService.deleteAll()
-    //     .then(response => {
-    //       console.log(response.data);
-    //       this.refreshList();
-    //     })
-    //     .catch(e => {
-    //       console.log(e);
-    //     });
-    // },
+    removeTagHTML(string) {
+      let value = string.replace(/<\/?[^>]+(>|$)/g, "");
+      return value;
+    },
 
     searchTitle() {
       ArticleDataService.findByTitle(this.title)

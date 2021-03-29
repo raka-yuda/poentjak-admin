@@ -40,38 +40,58 @@
       </d-col>
 
       <d-col md="6" class="mb-4">
-        
-        <d-card class="card-small mb-4 pt-3">
+        <d-card class="card-small mb-4">
+          <d-card-header class="border-bottom">
+            <h6 class="m-0">Current Author</h6>
+          </d-card-header>
+          <d-card-body>
+            <div v-if="currentAuthor">
+              <d-card-body class="p-0">
+                <div class="blog-comments__item d-flex p-3">
 
-          <div v-if="currentAuthor">
-            <!-- Card Header -->
-            <d-card-header class="text-center">
-              
-              <!-- User Avatar -->
-              <div class="mb-3 mx-auto">
-                <img class="rounded-circle" :src="currentAuthor.img_author" :alt="currentAuthor.name_author" width="110" height="110">
-              </div>
+                  <!-- Avatar -->
+                  <div class="mr-3">
+                    <img :src="currentAuthor.img_author" :alt="currentAuthor.name_author" class="avatar"/>
+                  </div>
 
-              <!-- User Name -->
-              <h4 class="mb-0">{{ currentAuthor.name_author }}</h4>
+                  <!-- Content -->
+                  <div class="blog-comments__content">
 
-              <!-- User Job Title -->
-              <!-- <span class="text-muted d-block mb-2">{{ userDetails.jobTitle }}</span> -->
+                    <!-- Content - Title -->
+                    <div class="blog-comments__meta text-muted">
+                      <p class="m-0 my-1 mb-2 text-secondary">{{ currentAuthor.name_author }}</p>
+                      <!-- <a class="text-secondary" :href="discussion.author.url">{{ discussion.author.name }}</a> on <a class="text-secondary" :href="discussion.post.url">{{ discussion.post.title }}</a> <span class="text-muted">– {{ discussion.date }}</span> -->
+                    </div>
 
-              <!-- User Follow -->
-              <d-button pill outline size="sm" class="mb-2"> <i class="material-icons mr-1">edit</i> <a class :href="'/author/edit/' + currentAuthor.id">Edit</a></d-button>
+                    <!-- Content - Body -->
+                    <!-- <p class="m-0 my-1 mb-2 text-secondary">{{ currentAuthor.name_author }}</p> -->
 
-            </d-card-header>
-          </div>
+                    <!-- Content - Actions -->
+                    <div class="blog-comments__actions">
+                      <d-button-group size="small">
+                        <d-button class="btn-white" @click="handleClick('reject', discussion.id)">
+                          <span class="text-danger"><i class="material-icons">clear</i></span> Delete
+                        </d-button>
+                        <d-button class="btn-white">
+                          <span class="text-light"><i class="material-icons">more_vert</i>
+                            <a class :href="'/author/edit/' + currentAuthor.id">Edit</a>
+                          </span>
+                        </d-button>
+                      </d-button-group>
+                    </div>
+                  </div>
 
-          <div v-else>
-            <br />
-            <p>Please click on a Tutorial...</p>
-          </div>
-
+                </div>
+              </d-card-body>
+            </div>
+            <div v-else>
+              <br />
+              <p>Please click on a Author...</p>
+            </div>
+          </d-card-body>
         </d-card>
-        
       </d-col>
+
     </d-row>
   </d-container>
 </template>
@@ -102,38 +122,12 @@ export default {
           console.log(e);
         });
     },
-    // retrieveArticles() {
-    //   ArticleDataService.getAll()
-    //     .then(response => {
-    //       this.articles = response.data;
-    //       console.log(response.data);
-    //     })
-    //     .catch(e => {
-    //       console.log(e);
-    //     });
-    // },
-
-    // refreshList() {
-    //   this.retrieveArticles();
-    //   this.currentArticle = null;
-    //   this.currentIndex = -1;
-    // },
 
     setActiveAuthor(author, index) {
       this.currentAuthor = author;
       this.currentIndex = index;
     },
 
-    // searchTitle() {
-    //   ArticleDataService.findByTitle(this.title)
-    //     .then(response => {
-    //       this.articles = response.data;
-    //       console.log(response.data);
-    //     })
-    //     .catch(e => {
-    //       console.log(e);
-    //     });
-    // }
   },
   mounted() {
     this.retrieveAuthors();
@@ -142,6 +136,19 @@ export default {
 </script>
 
 <style>
+.avatar {
+  vertical-align: middle;
+  /* width: 50px;
+  height: 50px;
+  border-radius: 50%; */
+  /* background-size: cover;
+  background-position: top center; */
+  object-fit: cover;
+  width: 3.125rem;
+  height: 100%;
+  border-radius: 0.25rem;
+}
+
 .list {
   text-align: left;
   max-width: 750px;

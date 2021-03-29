@@ -25,7 +25,7 @@
                     <div class="form-group">
                       <d-input-group class="mb-3">
                         <d-input
-                          placeholder="Title"
+                          placeholder="Title Article"
                           id="title_article"
                           v-model="article.title_article"
                           class="form-control"
@@ -38,7 +38,7 @@
                     <div class="form-group">
                       <d-input-group class="mb-3">
                         <d-input
-                          placeholder="Image Article"
+                          placeholder="Image Header Article"
                           id="img_article"
                           v-model="article.img_article"
                           class="form-control"
@@ -59,7 +59,7 @@
                     <div class="form-group">
                       <d-input-group class="mb-3">
                         <d-select :required="true" v-model="article.id_author">
-                          <option :value="null" disabled>Select Age</option>
+                          <option :value="null" disabled>Select Author</option>
                           <option
                             class="list-group-item"
                             v-for="item in author"
@@ -82,7 +82,7 @@
                       >You submitted successfully!</d-button
                     >
                   </d-col>
-                  <button class="btn btn-success" @click="newTutorial">
+                  <button class="btn btn-success" @click="newArticle">
                     Add
                   </button>
                 </div>
@@ -122,11 +122,9 @@ export default {
       },
       author: [],
       article: {
-        id: null,
-        img_article: "",
         title_article: "",
+        img_article: "",
         article: "",
-        published: false,
         id_author: ""
       },
       submitted: false
@@ -151,33 +149,18 @@ export default {
           console.log(e);
         });
     },
+    
     saveArticle() {
-      var currentdate = new Date();
-      var timenow =
-        currentdate.getFullYear() +
-        "-" +
-        currentdate.getMonth() +
-        "-" +
-        currentdate.getDate() +
-        " " +
-        +currentdate.getHours() +
-        ":" +
-        currentdate.getMinutes() +
-        ":" +
-        currentdate.getSeconds();
       var data = {
         img_article: this.article.img_article,
         title_article: this.article.title_article,
         article: this.article.article,
-        published: this.article.published,
-        post_date: timenow,
         id_author: this.article.id_author,
-        content: this.content
       };
+
       // console.log(data);
       ArticleDataService.create(data)
         .then(response => {
-          this.article.id = response.data.id;
           console.log(response.data);
           this.submitted = true;
         })
@@ -186,7 +169,7 @@ export default {
         });
     },
 
-    newTutorial() {
+    newArticle() {
       this.submitted = false;
       this.article = {};
     }

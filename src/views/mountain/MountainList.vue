@@ -12,7 +12,7 @@
       <d-col md="6" class="mb-4">
         <d-card class="card-small mb-4">
           <d-card-header class="border-bottom">
-            <h6 class="m-0">Articles List</h6>
+            <h6 class="m-0">Mountain List</h6>
           </d-card-header>
           <d-card-body>
             <ul class="list-group">
