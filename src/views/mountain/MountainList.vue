@@ -131,7 +131,7 @@
                           <span class="text-danger"><i class="material-icons">clear</i></span> Delete
                         </d-button>
                           <d-button class="btn-white">
-                            <router-link :to="''">
+                            <router-link :to="'/mountain/edit/' + currentMountain.id">
                             <span class="text-light"><i class="material-icons">more_vert</i>
                               Edit
                             </span>

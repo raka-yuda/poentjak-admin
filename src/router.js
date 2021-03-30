@@ -21,6 +21,7 @@ import EditAuthor from './views/author/EditAuthor.vue'
 
 import Mountains from './views/mountain/MountainList.vue'
 import AddMountain from './views/mountain/AddMountain.vue'
+import EditMountain from './views/mountain/EditMountain.vue'
 
 import PostMountains from './views/post-mountain/PostMountainList.vue'
 
@@ -89,6 +90,10 @@ export default new Router({
             path: "/mountain/add",
             name: "add-mountain",
             component: AddMountain
+        },{
+            path: "/mountain/edit/:id",
+            name: "edit-mountain",
+            component: EditMountain
         },{
             path: "/post-mountains",
             name: "post-mountains",
