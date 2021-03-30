@@ -72,11 +72,13 @@
                         <d-button class="btn-white" @click="handleClick('reject', discussion.id)">
                           <span class="text-danger"><i class="material-icons">clear</i></span> Delete
                         </d-button>
-                        <d-button class="btn-white">
-                          <span class="text-light"><i class="material-icons">more_vert</i>
-                            <a class :href="'/author/edit/' + currentAuthor.id">Edit</a>
-                          </span>
-                        </d-button>
+                          <d-button class="btn-white">
+                            <router-link :to="'/author/edit/' + currentAuthor.id">
+                            <span class="text-light"><i class="material-icons">more_vert</i>
+                              Edit
+                            </span>
+                            </router-link>
+                          </d-button>
                       </d-button-group>
                     </div>
                   </div>
@@ -127,7 +129,6 @@ export default {
       this.currentAuthor = author;
       this.currentIndex = index;
     },
-
   },
   mounted() {
     this.retrieveAuthors();

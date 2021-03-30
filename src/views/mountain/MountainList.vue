@@ -21,7 +21,7 @@
                 :class="{ active: index == currentIndex }"
                 v-for="(mountain, index) in mountains"
                 :key="index"
-                @click="{}"
+                @click="setActiveMountain(mountain, index)"
               >
                 {{ mountain.name_mt }}
               </li>
@@ -30,8 +30,8 @@
         </d-card>
       </d-col>
 
-      <!-- <d-col md="6" class="mb-4">
-        <d-card class="card-small mb-4">
+      <d-col md="6" class="mb-4">
+        <!-- <d-card class="card-small mb-4">
           <d-card-header class="border-bottom">
             <h6 class="m-0">Current Article</h6>
           </d-card-header>
@@ -44,8 +44,115 @@
               <p>Please click on a Tutorial...</p>
             </div>
           </d-card-body>
+        </d-card> -->
+
+        <d-card class="card-small mb-3">
+          <d-card-header class="border-bottom">
+            <h6 class="m-0">Current Mountain</h6>
+          </d-card-header>
+
+          <d-card-body class="p-1">
+            <d-list-group flush>
+                <div v-if="currentMountain">
+                  <d-list-group-item class="p-3">
+                    <d-row>
+                        <d-col md="4" class="">
+                          <span class="d-flex mb-2"><i class="material-icons mr-1">flag</i><strong class="mr-1">name_mt:</strong></span>
+                        </d-col>
+                        <d-col md="8" class="">
+                          {{currentMountain.name_mt}}
+                        </d-col>
+                    </d-row>
+                    <d-row>
+                        <d-col md="4" class="">
+                          <span class="d-flex mb-2"><i class="material-icons mr-1">flag</i><strong class="mr-1">coordinate:</strong></span>
+                        </d-col>
+                        <d-col md="8" class="">
+                          {{currentMountain.coordinate}}
+                        </d-col>
+                    </d-row>
+                    <d-row>
+                        <d-col md="4" class="">
+                          <span class="d-flex mb-2"><i class="material-icons mr-1">flag</i><strong class="mr-1">rating:</strong></span>
+                        </d-col>
+                        <d-col md="8" class="">
+                          {{currentMountain.rating}}
+                        </d-col>
+                    </d-row>
+                    <d-row>
+                        <d-col md="4" class="">
+                          <span class="d-flex mb-2"><i class="material-icons mr-1">flag</i><strong class="mr-1">img_mt:</strong></span>
+                        </d-col>
+                        <d-col md="8" class="">
+                          {{currentMountain.img_mt}}
+                        </d-col>
+                    </d-row>
+                    <d-row>
+                        <d-col md="4" class="">
+                          <span class="d-flex mb-2"><i class="material-icons mr-1">flag</i><strong class="mr-1">location:</strong></span>
+                        </d-col>
+                        <d-col md="8" class="">
+                          {{currentMountain.location}}
+                        </d-col>
+                    </d-row>
+                    <d-row>
+                        <d-col md="4" class="">
+                          <span class="d-flex mb-2"><i class="material-icons mr-1">flag</i><strong class="mr-1">description:</strong></span>
+                        </d-col>
+                        <d-col md="8" class="">
+                          {{currentMountain.description}}
+                        </d-col>
+                    </d-row>
+                    <d-row>
+                        <d-col md="4" class="">
+                          <span class="d-flex mb-2"><i class="material-icons mr-1">flag</i><strong class="mr-1">notes:</strong></span>
+                        </d-col>
+                        <d-col md="8" class="">
+                          {{currentMountain.notes}}
+                        </d-col>
+                    </d-row>
+                  </d-list-group-item>
+
+                  <!-- <d-list-group-item class="d-flex px-3">
+                    <d-button size="sm" class="btn-outline-accent">
+                      <i class="material-icons">save</i> Save Draft
+                    </d-button>
+
+                    <d-button size="sm" class="btn-accent ml-auto">
+                      <i class="material-icons">file_copy</i> Publish
+                    </d-button>
+                  </d-list-group-item> -->
+
+                  <!-- Content - Actions -->
+                  <d-list-group-item class="d-flex px-3">
+                    <div class="blog-comments__actions">
+                      <d-button-group size="small">
+                        <d-button class="btn-white" @click="{}">
+                          <span class="text-danger"><i class="material-icons">clear</i></span> Delete
+                        </d-button>
+                          <d-button class="btn-white">
+                            <router-link :to="''">
+                            <span class="text-light"><i class="material-icons">more_vert</i>
+                              Edit
+                            </span>
+                            </router-link>
+                          </d-button>
+                      </d-button-group>
+                    </div>
+                  </d-list-group-item>
+
+                </div>
+                <div v-else>
+                  <d-col>
+                    <d-button outline theme="info" class="my-3"
+                      >Just click one of them dude!</d-button
+                    >
+                  </d-col>
+                </div>
+              </d-list-group>
+          </d-card-body>
         </d-card>
-      </d-col> -->
+      </d-col>
 
     </d-row>
   </d-container>
