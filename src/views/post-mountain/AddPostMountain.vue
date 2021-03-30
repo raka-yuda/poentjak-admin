@@ -25,12 +25,12 @@
                     <div class="form-group">
                       <d-input-group class="mb-3">
                         <d-input
-                          placeholder="Name Author"
-                          id="name_author"
-                          v-model="author.name_author"
+                          placeholder="Post Name"
+                          id="post_name"
+                          v-model="post_mountain.post_name"
                           class="form-control"
                           required
-                          name="name_author"
+                          name="post_name"
                         />
                       </d-input-group>
                     </div>
@@ -38,17 +38,34 @@
                     <div class="form-group">
                       <d-input-group class="mb-3">
                         <d-input
-                          placeholder="Image Author"
-                          id="img_article"
-                          v-model="author.img_author"
+                          placeholder="Description"
+                          id="description"
+                          v-model="post_mountain.description"
                           class="form-control"
                           required
-                          name="img_author"
+                          name="description"
                         />
                       </d-input-group>
                     </div>
+
+                    <div class="form-group">
+                      <d-input-group class="mb-3">
+                        <d-select :required="true" v-model="post_mountain.id_mountain">
+                          <option :value="null" disabled>Select Id</option>
+                          <option
+                            class="list-group-item"
+                            v-for="item in mountains"
+                            :key="item.id"
+                            v-bind:value="item.id"
+                            :selected="post_mountain.id_mountain == item.id"
+                            >{{ item.name_mt }}</option
+                          >
+                        </d-select>
+                      </d-input-group>
+                    </div>
+                    
                   </d-form>
-                  <button @click="saveAuthor" class="btn btn-success">
+                  <button @click="savePostMountain" class="btn btn-success">
                     Submit
                   </button>
                 </div>
@@ -58,7 +75,7 @@
                       >You submitted successfully!</d-button
                     >
                   </d-col>
-                  <button class="btn btn-success" @click="newAuthor">
+                  <button class="btn btn-success" @click="newPostMountain">
                     Add
                   </button>
                 </div>
@@ -72,49 +89,46 @@
 </template>
 
 <script>
-// import ArticleDataService from "../services/ArticleDataService";
-import AuthorDataService from "../../services/AuthorDataService";
-import "quill/dist/quill.snow.css";
+import MountainDataService from "../../services/MountainDataService";
+import PostMountainDataService from "../../services/PostMountainDataService";
 
 export default {
   name: "add-author",
   data() {
     return {
-      config: {
-        modules: {
-          toolbar: [
-            [{ header: [1, 2, 3, 4, 5, false] }],
-            ["bold", "italic", "underline", "strike"],
-            ["blockquote", "code-block"],
-            [{ header: 1 }, { header: 2 }],
-            [{ list: "ordered" }, { list: "bullet" }],
-            [{ script: "sub" }, { script: "super" }],
-            [{ indent: "-1" }, { indent: "+1" }],
-            ["link", "image"]
-          ]
-        },
-        placeholder: "Write Something !!!",
-        theme: "snow"
+      post_mountain: {
+        post_name: "",
+        description: "",
+        id_mountain: "",
       },
-      author: {
-        name_author: "",
-        img_author: "",
-      },
+      mountains: [],
       submitted: false
     };
   },
   methods: {
-    saveAuthor() {
+    retrieveMountains() {
+      MountainDataService.getAll()
+        .then(response => {
+          this.mountains = response.data.mountains;
+          console.log(response.data);
+        })
+        .catch(e => {
+          console.log(e);
+        });
+    },
+
+    savePostMountain() {
       var data = {
-        name_author: this.article.img_article,
-        img_author: this.article.title_article,
+        post_name: this.post_mountain.post_name,
+        description: this.post_mountain.description,
+        id_mountain: this.post_mountain.id_mountain,
       };
 
       // console.log(data);
 
-      AuthorDataService.create(data)
+      PostMountainDataService.create(data)
         .then(response => {
-          this.article.id = response.data.id;
+          this.post_mountain.id = response.data.id;
           console.log(response.data);
           this.submitted = true;
         })
@@ -123,11 +137,14 @@ export default {
         });
     },
 
-    newAuthor() {
+    newPostMountain() {
       this.submitted = false;
-      this.author = {};
+      this.post_mountain = {};
     }
   },
+  mounted() {
+    this.retrieveMountains();
+  }
 };
 </script>
 

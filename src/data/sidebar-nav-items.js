@@ -71,6 +71,13 @@ export default function () {
           },
           htmlBefore: '<i class="material-icons">note_add</i>',
           htmlAfter: '',
+        }, {
+          title: 'Add Post Mountain',
+          to: {
+            name: 'add-post-mountains',
+          },
+          htmlBefore: '<i class="material-icons">note_add</i>',
+          htmlAfter: '',
         }
       ]
     },

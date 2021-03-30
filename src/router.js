@@ -24,6 +24,7 @@ import AddMountain from './views/mountain/AddMountain.vue'
 import EditMountain from './views/mountain/EditMountain.vue'
 
 import PostMountains from './views/post-mountain/PostMountainList.vue'
+import AddPostMountain from './views/post-mountain/AddPostMountain.vue'
 
 
 Vue.use(Router);
@@ -98,6 +99,10 @@ export default new Router({
             path: "/post-mountains",
             name: "post-mountains",
             component: PostMountains
+        },{
+            path: "/post-mountain/add",
+            name: "add-post-mountains",
+            component: AddPostMountain
         },
         {
             path: '/blog-overview',
