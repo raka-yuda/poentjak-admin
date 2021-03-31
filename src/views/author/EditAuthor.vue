@@ -116,7 +116,6 @@ export default {
     },
 
     updateAuthor() {
-      // console.log(this.currentArticle);
       AuthorDataService.update(this.currentAuthor.id, this.currentAuthor)
         .then(response => {
           console.log(response.data);
@@ -131,7 +130,6 @@ export default {
   mounted() {
     this.message = "";
     this.getAuthor(this.$route.params.id);
-    // this.retrieveAuthors();
   }
 };
 </script>

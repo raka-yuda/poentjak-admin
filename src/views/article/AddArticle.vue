@@ -131,19 +131,10 @@ export default {
     };
   },
   methods: {
-    // selectionChange(editor, range) {
-    //   if (range) {
-    //     if (range.start !== range.end) {
-    //       this.selectedText = editor.getText(range.start, range.end);
-    //       editor.formatText(range, "custom", "hello world");
-    //     }
-    //   }
-    // },
     retrieveAuthors() {
       AuthorDataService.getAll()
         .then(response => {
           this.author = response.data;
-          // console.log(response.data);
         })
         .catch(e => {
           console.log(e);
@@ -158,10 +149,9 @@ export default {
         id_author: this.article.id_author,
       };
 
-      // console.log(data);
       ArticleDataService.create(data)
         .then(response => {
-          console.log(response.data);
+          console.log(response.data.id);
           this.submitted = true;
         })
         .catch(e => {

@@ -107,8 +107,9 @@
               <!-- <a class="badge badge-warning" :href="'/articles/' + currentArticle.id">Edit</a> -->
             </div>
             <div v-else>
-              <br />
-              <p>Please click on a Tutorial...</p>
+              <d-button outline theme="warning" class="my-1" disabled>
+                Just click one of them dude!
+              </d-button>
             </div>
           </d-card-body>
         </d-card>
@@ -135,7 +136,6 @@ export default {
       ArticleDataService.getAll()
         .then(response => {
           this.articles = response.data;
-          console.log(response.data);
         })
         .catch(e => {
           console.log(e);
@@ -163,7 +163,6 @@ export default {
       ArticleDataService.findByTitle(this.title)
         .then(response => {
           this.articles = response.data;
-          console.log(response.data);
         })
         .catch(e => {
           console.log(e);

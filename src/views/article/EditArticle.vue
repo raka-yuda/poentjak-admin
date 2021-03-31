@@ -154,26 +154,7 @@ export default {
         });
     },
 
-    // updatePublished(status) {
-    //   var data = {
-    //     id: this.currentTutorial.id,
-    //     title: this.currentTutorial.title,
-    //     description: this.currentTutorial.description,
-    //     published: status
-    //   };
-
-    //   TutorialDataService.update(this.currentTutorial.id, data)
-    //     .then(response => {
-    //       this.currentTutorial.published = status;
-    //       console.log(response.data);
-    //     })
-    //     .catch(e => {
-    //       console.log(e);
-    //     });
-    // },
-
     updateArticle() {
-      // console.log(this.currentArticle);
       ArticleDataService.update(this.currentArticle.id, this.currentArticle)
         .then(response => {
           console.log(response.data);

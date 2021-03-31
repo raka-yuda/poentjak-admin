@@ -74,28 +74,11 @@
 <script>
 // import ArticleDataService from "../services/ArticleDataService";
 import AuthorDataService from "../../services/AuthorDataService";
-import "quill/dist/quill.snow.css";
 
 export default {
   name: "add-author",
   data() {
     return {
-      config: {
-        modules: {
-          toolbar: [
-            [{ header: [1, 2, 3, 4, 5, false] }],
-            ["bold", "italic", "underline", "strike"],
-            ["blockquote", "code-block"],
-            [{ header: 1 }, { header: 2 }],
-            [{ list: "ordered" }, { list: "bullet" }],
-            [{ script: "sub" }, { script: "super" }],
-            [{ indent: "-1" }, { indent: "+1" }],
-            ["link", "image"]
-          ]
-        },
-        placeholder: "Write Something !!!",
-        theme: "snow"
-      },
       author: {
         name_author: "",
         img_author: "",
@@ -109,8 +92,6 @@ export default {
         name_author: this.article.img_article,
         img_author: this.article.title_article,
       };
-
-      // console.log(data);
 
       AuthorDataService.create(data)
         .then(response => {

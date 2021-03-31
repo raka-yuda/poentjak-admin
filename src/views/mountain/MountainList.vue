@@ -51,10 +51,11 @@
             <h6 class="m-0">Current Mountain</h6>
           </d-card-header>
 
-          <d-card-body class="p-1">
-            <d-list-group flush>
-                <div v-if="currentMountain">
-                  <d-list-group-item class="p-3">
+          <d-card-body>
+            <div v-if="currentMountain">
+               <d-list-group flush>
+                
+                  <d-list-group-item>
                     <d-row>
                         <d-col md="4" class="">
                           <span class="d-flex mb-2"><i class="material-icons mr-1">flag</i><strong class="mr-1">name_mt:</strong></span>
@@ -141,15 +142,15 @@
                     </div>
                   </d-list-group-item>
 
-                </div>
-                <div v-else>
-                  <d-col>
-                    <d-button outline theme="info" class="my-3"
-                      >Just click one of them dude!</d-button
-                    >
-                  </d-col>
-                </div>
+                
+                
               </d-list-group>
+              </div>
+              <div v-else>
+                  <d-button outline theme="warning" class="my-1" disabled>
+                    Just click one of them dude!
+                  </d-button>
+                </div>
           </d-card-body>
         </d-card>
       </d-col>

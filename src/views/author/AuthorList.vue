@@ -87,8 +87,9 @@
               </d-card-body>
             </div>
             <div v-else>
-              <br />
-              <p>Please click on a Author...</p>
+              <d-button outline theme="warning" class="my-1" disabled>
+                Just click one of them dude!
+              </d-button>
             </div>
           </d-card-body>
         </d-card>
@@ -139,11 +140,6 @@ export default {
 <style>
 .avatar {
   vertical-align: middle;
-  /* width: 50px;
-  height: 50px;
-  border-radius: 50%; */
-  /* background-size: cover;
-  background-position: top center; */
   object-fit: cover;
   width: 3.125rem;
   height: 100%;
