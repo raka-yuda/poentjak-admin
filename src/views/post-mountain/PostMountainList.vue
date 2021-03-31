@@ -31,7 +31,7 @@
       </d-col>
 
       
-      <d-col v-if="currentMountain" md="6" class="mb-4">
+      <!-- <d-col v-if="currentMountain" md="6" class="mb-4">
         <d-card class="card-small mb-4">
           <d-card-header class="border-bottom">
             <h6 class="m-0">List Post of {{currentMountain.name_mt}}</h6>
@@ -49,7 +49,89 @@
             </ul>
           </d-card-body>
         </d-card>
+      </d-col> -->
+
+      <d-col md="6" class="mb-4">
+        <d-card class="card-small mb-3">
+          <d-card-header class="border-bottom">
+            <h6 class="m-0">List Post of current Mountain</h6>
+          </d-card-header>
+
+          <d-card-body>
+            <div v-if="currentMountain && post_mountains.length != 0">
+              <d-list-group flush>
+                
+                  <div v-for="(post_mountain, index) in post_mountains" :key="index">
+                    <d-list-group-item class="p-3">
+                        <d-row>
+                            <d-col md="4" class="">
+                              <span class="d-flex mb-2"><i class="material-icons mr-1">flag</i><strong class="mr-1">post_name:</strong></span>
+                            </d-col>
+                            <d-col md="8" class="">
+                              {{post_mountain.post_name}}
+                            </d-col>
+                        </d-row>
+                        <d-row>
+                            <d-col md="4" class="">
+                              <span class="d-flex mb-2"><i class="material-icons mr-1">flag</i><strong class="mr-1">description:</strong></span>
+                            </d-col>
+                            <d-col md="8" class="">
+                              {{post_mountain.description}}
+                            </d-col>
+                        </d-row>
+                        <d-row>
+                            <d-col md="4" class="">
+                              <span class="d-flex mb-2"><i class="material-icons mr-1">flag</i><strong class="mr-1">id_mountain:</strong></span>
+                            </d-col>
+                            <d-col md="8" class="">
+                              {{post_mountain.id_mountain}}
+                            </d-col>
+                        </d-row>
+                      
+                    </d-list-group-item>
+                    <!-- Content - Actions -->
+                    <d-list-group-item class="d-flex px-3">
+                      <div class="blog-comments__actions">
+                        <d-button-group size="small">
+                          <d-button class="btn-white" @click="{}">
+                            <span class="text-danger"><i class="material-icons">clear</i></span> Delete
+                          </d-button>
+                            <d-button class="btn-white">
+                              <router-link :to="'/post-mountain/edit/' + post_mountain.id">
+                              <span class="text-light"><i class="material-icons">more_vert</i>
+                                Edit
+                              </span>
+                              </router-link>
+                            </d-button>
+                        </d-button-group>
+                      </div>
+                    </d-list-group-item>
+
+                  
+                </div>
+                
+              </d-list-group>
+
+              </div>
+
+              <div v-else-if="currentMountain && post_mountains.length == 0">
+                <d-button outline theme="danger" class="my-1" disabled>
+                  Empty post data on this mountain!
+                </d-button>
+              </div>
+
+              <div v-else>
+                <d-button outline theme="warning" class="my-1" disabled>
+                  Just click one of them dude!
+                </d-button>
+                
+              </div>
+              
+          </d-card-body>
+        </d-card>
       </d-col>
+
+      
       
       
 
@@ -87,7 +169,7 @@ export default {
       PostMountainDataService.getByIdMountain(id_mountain)
         .then(response => {
           this.post_mountains = response.data.post_mountains;
-          console.log(response.data);
+          // console.log(response.data);
         })
         .catch(e => {
           console.log(e);

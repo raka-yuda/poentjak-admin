@@ -11,7 +11,7 @@
     <d-row>
       <d-col lg="12" class="mb-4">
         <d-card class="card-small mb-4">
-          <div v-if="currentAuthor">
+          <div v-if="currentPostMountain">
             <d-card-header class="border-bottom">
               <h6 class="m-0">Form Inputs</h6>
             </d-card-header>
@@ -25,12 +25,12 @@
                     <div class="form-group">
                       <d-input-group class="mb-3">
                         <d-input
-                          placeholder="Name Author"
-                          id="name_author"
-                          v-model="currentAuthor.name_author"
+                          placeholder="Post Name"
+                          id="post_name"
+                          v-model="currentPostMountain.post_name"
                           class="form-control"
                           required
-                          name="name_author"
+                          name="post_name"
                         />
                       </d-input-group>
                     </div>
@@ -38,23 +38,39 @@
                     <div class="form-group">
                       <d-input-group class="mb-3">
                         <d-input
-                          placeholder="Image Author"
-                          id="img_author"
-                          v-model="currentAuthor.img_author"
+                          placeholder="Description"
+                          id="description"
+                          v-model="currentPostMountain.description"
                           class="form-control"
                           required
-                          name="img_author"
+                          name="description"
                         />
                       </d-input-group>
                     </div>
 
+                    <div class="form-group">
+                      <d-input-group class="mb-3">
+                        <d-select :required="true" v-model="currentPostMountain.id_mountain">
+                          <option :value="null" disabled>Select Id</option>
+                          <option
+                            class="list-group-item"
+                            v-for="item in mountains"
+                            :key="item.id"
+                            v-bind:value="item.id"
+                            :selected="currentPostMountain.id_mountain == item.id"
+                            >{{ item.name_mt }}</option
+                          >
+                        </d-select>
+                      </d-input-group>
+                    </div>
+                    
                   </d-form>
 
                   <!-- <button @click="deleteArticle" class="btn btn-danger mr-3">
                     Delete
                   </button> -->
                   <button
-                    @click="updateAuthor()"
+                    @click="updatePostMountain()"
                     class="btn btn-success"
                     type="submit"
                   >
@@ -83,36 +99,46 @@
 </template>
 
 <script>
-// import ArticleDataService from "../../services/ArticleDataService";
-import AuthorDataService from "../../services/AuthorDataService";
+
+import MountainDataService from "../../services/MountainDataService";
+import PostMountainDataService from "../../services/PostMountainDataService";
 
 export default {
-  name: "edit-author",
+  name: "edit-post-mountain",
   data() {
     return {
-      currentAuthor: null,
+      currentPostMountain: null,
+      mountain: [],
       message: "",
     };
   },
   methods: {
-
-    getAuthor(id) {
-      AuthorDataService.get(id)
+    retrieveMountains() {
+      MountainDataService.getAll()
         .then(response => {
-          this.currentAuthor = response.data;
+          this.mountains = response.data.mountains;
           console.log(response.data);
         })
         .catch(e => {
           console.log(e);
         });
     },
-
-    updateAuthor() {
-      // console.log(this.currentArticle);
-      AuthorDataService.update(this.currentAuthor.id, this.currentAuthor)
+    getPostMountain(id) {
+      PostMountainDataService.get(id)
+        .then(response => {
+          this.currentPostMountain = response.data;
+          console.log(response.data);
+        })
+        .catch(e => {
+          console.log(e);
+        });
+    },
+    
+    updatePostMountain() {
+      PostMountainDataService.update(this.currentPostMountain.id, this.currentPostMountain)
         .then(response => {
           console.log(response.data);
-          this.message = "Author was updated successfully!";
+          this.message = "Post Mountain was updated successfully!";
         })
         .catch(e => {
           console.log(e);
@@ -122,8 +148,9 @@ export default {
   },
   mounted() {
     this.message = "";
-    this.getAuthor(this.$route.params.id);
-    // this.retrieveAuthors();
+    this.retrieveMountains();
+    this.getPostMountain(this.$route.params.id);
+    
   }
 };
 </script>

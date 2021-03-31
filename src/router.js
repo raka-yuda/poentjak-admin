@@ -25,6 +25,7 @@ import EditMountain from './views/mountain/EditMountain.vue'
 
 import PostMountains from './views/post-mountain/PostMountainList.vue'
 import AddPostMountain from './views/post-mountain/AddPostMountain.vue'
+import EditPostMountain from './views/post-mountain/EditPostMountain.vue'
 
 
 Vue.use(Router);
@@ -83,26 +84,36 @@ export default new Router({
             path: "/author/edit/:id",
             name: "edit-author",
             component: EditAuthor
-        },{
+        },
+        {
             path: "/mountains",
             name: "mountains",
             component: Mountains
-        },{
+        },
+        {
             path: "/mountain/add",
             name: "add-mountain",
             component: AddMountain
-        },{
+        },
+        {
             path: "/mountain/edit/:id",
             name: "edit-mountain",
             component: EditMountain
-        },{
+        },
+        {
             path: "/post-mountains",
             name: "post-mountains",
             component: PostMountains
-        },{
+        },
+        {
             path: "/post-mountain/add",
             name: "add-post-mountains",
             component: AddPostMountain
+        },
+        {
+            path: "/post-mountain/edit/:id",
+            name: "edit-post-mountains",
+            component: EditPostMountain
         },
         {
             path: '/blog-overview',
