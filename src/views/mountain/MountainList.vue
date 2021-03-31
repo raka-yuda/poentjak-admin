@@ -57,7 +57,7 @@
                 
                   <d-list-group-item>
                     <d-row>
-                        <d-col md="4" class="">
+                        <d-col md="4" class="pl-0">
                           <span class="d-flex mb-2"><i class="material-icons mr-1">flag</i><strong class="mr-1">name_mt:</strong></span>
                         </d-col>
                         <d-col md="8" class="">
@@ -65,7 +65,7 @@
                         </d-col>
                     </d-row>
                     <d-row>
-                        <d-col md="4" class="">
+                        <d-col md="4" class="pl-0">
                           <span class="d-flex mb-2"><i class="material-icons mr-1">flag</i><strong class="mr-1">coordinate:</strong></span>
                         </d-col>
                         <d-col md="8" class="">
@@ -73,7 +73,7 @@
                         </d-col>
                     </d-row>
                     <d-row>
-                        <d-col md="4" class="">
+                        <d-col md="4" class="pl-0">
                           <span class="d-flex mb-2"><i class="material-icons mr-1">flag</i><strong class="mr-1">rating:</strong></span>
                         </d-col>
                         <d-col md="8" class="">
@@ -81,7 +81,7 @@
                         </d-col>
                     </d-row>
                     <d-row>
-                        <d-col md="4" class="">
+                        <d-col md="4" class="pl-0">
                           <span class="d-flex mb-2"><i class="material-icons mr-1">flag</i><strong class="mr-1">img_mt:</strong></span>
                         </d-col>
                         <d-col md="8" class="">
@@ -89,7 +89,7 @@
                         </d-col>
                     </d-row>
                     <d-row>
-                        <d-col md="4" class="">
+                        <d-col md="4" class="pl-0">
                           <span class="d-flex mb-2"><i class="material-icons mr-1">flag</i><strong class="mr-1">location:</strong></span>
                         </d-col>
                         <d-col md="8" class="">
@@ -97,7 +97,7 @@
                         </d-col>
                     </d-row>
                     <d-row>
-                        <d-col md="4" class="">
+                        <d-col md="4" class="pl-0">
                           <span class="d-flex mb-2"><i class="material-icons mr-1">flag</i><strong class="mr-1">description:</strong></span>
                         </d-col>
                         <d-col md="8" class="">
@@ -105,7 +105,7 @@
                         </d-col>
                     </d-row>
                     <d-row>
-                        <d-col md="4" class="">
+                        <d-col md="4" class="pl-0">
                           <span class="d-flex mb-2"><i class="material-icons mr-1">flag</i><strong class="mr-1">notes:</strong></span>
                         </d-col>
                         <d-col md="8" class="">
@@ -183,6 +183,17 @@ export default {
           console.log(e);
         });
     },
+
+    // deleteMountain() {
+    //   MountainDataService.delete(this.currentMountain.id)
+    //     .then(response => {
+    //       console.log(response.data);
+    //       this.$router.push({ name: "mountains" });
+    //     })
+    //     .catch(e => {
+    //       console.log(e);
+    //     });
+    // },
 
     refreshList() {
       this.retrieveMountains();

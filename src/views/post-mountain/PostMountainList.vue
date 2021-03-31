@@ -176,6 +176,17 @@ export default {
         });
     },
 
+    // deletePostMountain(id) {
+    //   PostMountainDataService.delete(id)
+    //     .then(response => {
+    //       console.log(response.data);
+    //       this.$router.push({ name: "post-mountains" });
+    //     })
+    //     .catch(e => {
+    //       console.log(e);
+    //     });
+    // },
+    
     refreshList() {
       this.retrieveMountains();
       this.currentMountain = null;

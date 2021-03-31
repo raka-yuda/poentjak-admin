@@ -126,6 +126,17 @@ export default {
         });
     },
 
+    // deleteAuthor() {
+    //   AuthorDataService.delete(this.currentAuthor.id)
+    //     .then(response => {
+    //       console.log(response.data);
+    //       this.$router.push({ name: "authors" });
+    //     })
+    //     .catch(e => {
+    //       console.log(e);
+    //     });
+    // },
+
     setActiveAuthor(author, index) {
       this.currentAuthor = author;
       this.currentIndex = index;
