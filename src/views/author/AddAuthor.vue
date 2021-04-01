@@ -39,7 +39,7 @@
                       <d-input-group class="mb-3">
                         <d-input
                           placeholder="Image Author"
-                          id="img_article"
+                          id="img_author"
                           v-model="author.img_author"
                           class="form-control"
                           required
@@ -89,13 +89,13 @@ export default {
   methods: {
     saveAuthor() {
       var data = {
-        name_author: this.article.img_article,
-        img_author: this.article.title_article,
+        name_author: this.author.name_author,
+        img_author: this.author.img_author,
       };
 
       AuthorDataService.create(data)
         .then(response => {
-          this.article.id = response.data.id;
+          this.author.id = response.data.id;
           console.log(response.data);
           this.submitted = true;
         })

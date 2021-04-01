@@ -48,16 +48,13 @@
                       </d-input-group>
                     </div>
 
-                    <div class="form-group">
-                      <d-form-textarea
-                        id="article"
-                        class="form-control"
+                    <d-form class="form-group">
+                      <quill
                         v-model="currentArticle.article"
-                        :placeholder="`Enter something`"
-                        :rows="6"
-                        :max-rows="9"
-                      ></d-form-textarea>
-                    </div>
+                        :config="config"
+                        output="html"
+                      ></quill>
+                    </d-form>
 
                     <div class="form-group">
                       <d-input-group class="mb-3">
@@ -127,6 +124,22 @@ export default {
   name: "article",
   data() {
     return {
+      config: {
+        modules: {
+          toolbar: [
+            [{ header: [1, 2, 3, 4, 5, false] }],
+            ["bold", "italic", "underline", "strike"],
+            ["blockquote", "code-block"],
+            [{ header: 1 }, { header: 2 }],
+            [{ list: "ordered" }, { list: "bullet" }],
+            [{ script: "sub" }, { script: "super" }],
+            [{ indent: "-1" }, { indent: "+1" }],
+            ["link", "image"]
+          ]
+        },
+        placeholder: "Write Something !!!",
+        theme: "snow"
+      },
       currentArticle: null,
       message: "",
       author: []
