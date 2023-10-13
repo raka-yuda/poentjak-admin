@@ -1,112 +1,40 @@
 <template>
-  <d-container fluid class="main-content-container px-4">
+  <d-container class="main-content-container px-md-4">
     <!-- Page Header -->
-    <d-row no-gutters class="page-header py-2 pb-4 mb-3 border-bottom">
-      <d-col col sm="4" class="text-center text-sm-left mb-4 mb-sm-0">
+    <d-row no-gutters class="page-header py-2 pb-4 mb-3 border-bottom d-flex justify-content-center mt-4">
+      <d-col col sm="4" class="text-center mb-4 mb-sm-0">
         <span class="text-uppercase page-subtitle">ARTICLE</span>
         <h3 class="page-title">Show Articles</h3>
       </d-col>
     </d-row>
 
-    <d-row>
-      <d-col lg="12" class="mb-4">
+    <d-row class="d-flex justify-content-center">
+      <d-col sm="12" class="my-3 ">
+
         <d-card class="card-small mb-4">
           <div v-if="currentArticle">
-            <!-- <d-card-header class="border-bottom">
-              <h6 class="m-0">Form Inputs</h6>
-            </d-card-header> -->
             <div
-              class="card-post__image"
-              :style="{
-                backgroundImage: 'url(\'' + currentArticle.img_article + '\')'
-              }"
-            >
-              <!-- <div class="card-post__author d-flex">
-                <a
-                  href="#"
-                  class="card-post__author-avatar card-post__author-avatar--small"
-                  :style="{
-                    backgroundImage:
-                      'url(\'' + currentArticle.author.img_author + '\')'
-                  }"
-                  >Written by Anna Ken</a
-                >
-              </div> -->
+              class="card-post__image" :style="{backgroundImage: 'url(\'' + currentArticle.img_article + '\')'}">
             </div>
 
             <div v-if="currentArticle.author" class="row m-3 d-flex align-items-center">
               <img class="rounded-circle mr-3" :src="currentArticle.author.img_author" width="46" height="46" style="background-size: cover; object-fit: cover;">
 
-              <h6 class="mb-0 mr-4">{{ currentArticle.author.name_author }}</h6>
-              <span class="dot mr-4"></span>
+              <h6 class="mb-0 mr-md-4 mr-2">{{ currentArticle.author.name_author }}</h6>
+              <span class="dot mr-md-4 mr-2"></span>
               <p class="mb-0">{{ currentArticle.post_date }}</p>
             </div>
 
-            <d-list-group-item class="p-3">
+            <d-list-group-item class="px-6">
               <d-row>
                 <!-- Forms -->
                 <d-col md="12">
                   <!-- <strong class="text-muted d-block mb-2">Forms</strong> -->
                   <d-form>
-                    <div class="form-group">
-                      <d-input-group class="mb-3">
-                        <!-- <d-input
-                          placeholder="Title"
-                          id="title_article"
-                          v-model="currentArticle.title_article"
-                          class="form-control"
-                          required
-                          name="title_article"
-                        /> -->
-                        <h4 class="mb-0">{{ currentArticle.title_article }}</h4>
-                      </d-input-group>
-                    </div>
-
-                    <!-- <div class="form-group">
-                      <d-input-group class="mb-3">
-                        <d-input
-                          placeholder="Image Article"
-                          id="img_article"
-                          v-model="currentArticle.img_article"
-                          class="form-control"
-                          required
-                          name="img_article"
-                        />
-                      </d-input-group>
-                    </div> -->
-
-                    <div v-html="currentArticle.article"></div>
-
-                    <!-- <div class="form-group">
-                      <d-input-group class="mb-3">
-                        <d-select
-                          :required="true"
-                          v-model="currentArticle.id_author"
-                        >
-                          <option :value="null" disabled>Select Age</option>
-                          <option
-                            class="list-group-item"
-                            v-for="item in author"
-                            :key="item.id"
-                            v-bind:value="item.id"
-                            :selected="currentArticle.id_author == item.id"
-                            >{{ item.name_author }}</option
-                          >
-                        </d-select>
-                      </d-input-group>
-                    </div> -->
+                      <h1 class="title-article mb-0">{{ currentArticle.title_article }}</h1>
+                      <p v-html="currentArticle.article"></p>
                   </d-form>
 
-                  <!-- <button @click="deleteArticle" class="btn btn-danger mr-3">
-                    Delete
-                  </button>
-                  <button
-                    @click="updateArticle"
-                    class="btn btn-success"
-                    type="submit"
-                  >
-                    Update
-                  </button> -->
                 </d-col>
 
                 <div v-if="message">
@@ -172,7 +100,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .edit-form {
   max-width: 300px;
   margin: auto;
@@ -184,5 +112,63 @@ export default {
   background-color: #E3E6E8;
   border-radius: 50%;
   display: inline-block;
+}
+
+
+
+
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  p {
+    font-size: 16px !important;
+    line-height: 24px !important;
+  }
+
+  h2 {
+    font-size: 20px !important;
+    line-height: 24px !important;
+  }
+
+  h1 {
+    font-size: 34px !important;
+    line-height: 42px !important;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  p {
+    font-size: 18px !important;
+    line-height: 28px !important;
+  }
+
+  h2 {
+    font-size: 10px !important;
+    line-height: 24px !important;
+  }
+
+  h1{
+    font-size: 34px !important;
+    line-height: 42px !important;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  p {
+    font-size: 21px !important;
+    line-height: 32px !important;
+  }
 }
 </style>
